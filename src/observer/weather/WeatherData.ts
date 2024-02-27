@@ -15,8 +15,12 @@ export default class WeatherData implements Subject {
     this.observers.push(o);
   }
 
-  removeObserver(o: Observer): void {
-    this.observers.filter((observer) => observer !== o);
+  removeObserver(observer: Observer): void {
+    const index = this.observers.indexOf(observer);
+
+    if (index !== -1) {
+      this.observers.splice(index, 1);
+    }
   }
 
   notifyObservers(): void {
@@ -35,5 +39,17 @@ export default class WeatherData implements Subject {
     this.pressure = pressure;
 
     this.measurementsChanged();
+  }
+
+  getTemperature(): number {
+    return this.temperature;
+  }
+
+  getHumidity(): number {
+    return this.humidity;
+  }
+
+  getPressure(): number {
+    return this.pressure;
   }
 }
