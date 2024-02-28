@@ -11,19 +11,22 @@ export default class StatisticsDisplay implements Observer, DisplayElement {
 
   constructor(weatherData: WeatherData) {
     this.weatherData = weatherData;
+
     this.weatherData.registerObserver(this);
   }
 
-  update(temp: number, humidity: number, pressure: number): void {
-    this.tempSum += temp;
+  update(): void {
+    const temperature = this.weatherData.getTemperature();
+
+    this.tempSum += temperature;
     this.numReadings++;
 
-    if (temp > this.maxTemp) {
-      this.maxTemp = temp;
+    if (temperature > this.maxTemp) {
+      this.maxTemp = temperature;
     }
 
-    if (temp < this.minTemp) {
-      this.minTemp = temp;
+    if (temperature < this.minTemp) {
+      this.minTemp = temperature;
     }
 
     this.display();

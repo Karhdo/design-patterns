@@ -8,11 +8,16 @@ export default class HeatIndexDisplay implements Observer, DisplayElement {
 
   constructor(weatherData: WeatherData) {
     this.weatherData = weatherData;
+
     this.weatherData.registerObserver(this);
   }
 
-  update(t: number, rh: number, pressure: number): void {
-    this.heatIndex = this.computeHeatIndex(t, rh);
+  update(): void {
+    const temperature = this.weatherData.getTemperature();
+    const humidity = this.weatherData.getHumidity();
+
+    this.heatIndex = this.computeHeatIndex(temperature, humidity);
+
     this.display();
   }
 
