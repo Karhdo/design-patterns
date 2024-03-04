@@ -1,6 +1,6 @@
-import Observer from './Observer';
-import WeatherData from './WeatherData';
-import DisplayElement from './DisplayElement';
+import Observer from '../Observer';
+import WeatherData from '../WeatherData';
+import DisplayElement from '../DisplayElement';
 
 export default class StatisticsDisplay implements Observer, DisplayElement {
   private maxTemp: number = 0.0;

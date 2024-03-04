@@ -1,5 +1,5 @@
-import { FlyBehavior } from './FlyBehavior'
-import { QuackBehavior } from './QuackBehavior'
+import { FlyBehavior } from './Behavior/FlyBehavior'
+import { QuackBehavior } from './Behavior/QuackBehavior'
 
 export abstract class Duck {
   protected flyBehavior: FlyBehavior | null;

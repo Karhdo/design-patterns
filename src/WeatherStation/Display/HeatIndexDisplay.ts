@@ -1,6 +1,6 @@
-import Observer from './Observer';
-import WeatherData from './WeatherData';
-import DisplayElement from './DisplayElement';
+import Observer from '../Observer';
+import WeatherData from '../WeatherData';
+import DisplayElement from '../DisplayElement';
 
 export default class HeatIndexDisplay implements Observer, DisplayElement {
   private heatIndex: number = 0.0;

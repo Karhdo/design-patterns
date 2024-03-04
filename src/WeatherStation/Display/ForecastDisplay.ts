@@ -1,6 +1,6 @@
-import Observer from './Observer';
-import DisplayElement from './DisplayElement';
-import WeatherData from './WeatherData';
+import Observer from '../Observer';
+import DisplayElement from '../DisplayElement';
+import WeatherData from '../WeatherData';
 
 export default class ForecastDisplay implements Observer, DisplayElement {
   private currentPressure = 29.92;
