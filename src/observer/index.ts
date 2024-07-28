@@ -1,8 +1,5 @@
-import WeatherData from './WeatherData';
-import CurrentConditionDisplay from './Display/CurrentConditionDisplay';
-import StatisticsDisplay from './Display/StatisticsDisplay';
-import ForecastDisplay from './Display/ForecastDisplay';
-import HeatIndexDisplay from './Display/HeatIndexDisplay';
+import { WeatherData } from './subject';
+import { CurrentConditionDisplay, ForecastDisplay, StatisticsDisplay, HeatIndexDisplay } from './display';
 
 export default class WeatherStation {
   main(args: Array<string>) {

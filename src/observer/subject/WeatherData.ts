@@ -1,7 +1,6 @@
-import Subject from './Subject';
-import Observer from './Observer';
+import { Subject, Observer } from '../interface';
 
-export default class WeatherData implements Subject {
+export class WeatherData implements Subject {
   private observers: Array<Observer>;
   private temperature: number;
   private humidity: number;
