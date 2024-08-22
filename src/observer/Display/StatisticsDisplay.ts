@@ -1,8 +1,7 @@
-import Observer from '../Observer';
-import WeatherData from '../WeatherData';
-import DisplayElement from '../DisplayElement';
+import { Observer, DisplayElement } from '../interface';
+import { WeatherData } from '../subject';
 
-export default class StatisticsDisplay implements Observer, DisplayElement {
+export class StatisticsDisplay implements Observer, DisplayElement {
   private maxTemp: number = 0.0;
   private minTemp: number = 200;
   private tempSum: number = 0.0;

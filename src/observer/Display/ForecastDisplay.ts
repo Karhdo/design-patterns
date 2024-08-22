@@ -1,8 +1,7 @@
-import Observer from '../Observer';
-import DisplayElement from '../DisplayElement';
-import WeatherData from '../WeatherData';
+import { Observer, DisplayElement } from '../interface';
+import { WeatherData } from '../subject';
 
-export default class ForecastDisplay implements Observer, DisplayElement {
+export class ForecastDisplay implements Observer, DisplayElement {
   private currentPressure = 29.92;
   private lastPressure;
   private weatherData: WeatherData;
