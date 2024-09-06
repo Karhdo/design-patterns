@@ -1,4 +1,10 @@
 export default class GarageDoor {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
   up(): void {
     console.log('Garage door is open');
   }

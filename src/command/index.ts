@@ -1,6 +1,14 @@
-import { Command } from './interfaces';
-import { LighOnCommand, NoCommand, LighOffCommand } from './commands';
-import { Light } from './devices';
+import { CeilingFan, Light, GarageDoor } from './devices';
+import { Command, NamedFunction } from './interfaces';
+import {
+  NoCommand,
+  LighOnCommand,
+  LighOffCommand,
+  GarageDoorOnCommand,
+  GarageDoorOffCommand,
+  CeilingFanOnCommand,
+  CeilingFanOffCommand,
+} from './commands';
 
 class RemoteControl {
   onCommands: Array<Command>;
@@ -35,8 +43,8 @@ class RemoteControl {
     let result = '\n------ Remote Control -------\n';
 
     for (let i = 0; i < this.onCommands.length; i++) {
-      const onCommandName = (this.onCommands[i].constructor ).name;
-      const offCommandName = (this.offCommands[i].constructor).name;
+      const onCommandName = (this.onCommands[i]?.constructor as NamedFunction).name || 'NoCommand';
+      const offCommandName = (this.offCommands[i]?.constructor as NamedFunction).name || 'NoCommand';
 
       result += `[slot ${i}] ${onCommandName}   ${offCommandName}\n`;
     }
@@ -50,19 +58,40 @@ class RemoteControlTest {
     const remoteControl = new RemoteControl();
 
     const livingRoomLight = new Light('Living Room');
+    const kitchenLight = new Light('Kitchen');
+    const ceilingFan = new CeilingFan('Living Room');
+    const garageDoor = new GarageDoor('Garage');
 
     const livingRoomLightOn = new LighOnCommand(livingRoomLight);
     const livingRoomLightOff = new LighOffCommand(livingRoomLight);
 
-    const kitchenLight = new Light('Kitchen');
-
     const kitchenLightOn = new LighOnCommand(kitchenLight);
     const kitchenLightOff = new LighOffCommand(kitchenLight);
 
+    const ceilingFanOn = new CeilingFanOnCommand(ceilingFan);
+    const ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
+
+    const garageDoorUp = new GarageDoorOnCommand(garageDoor);
+    const garageDoorDown = new GarageDoorOffCommand(garageDoor);
+
     remoteControl.setCommand(0, livingRoomLightOn, livingRoomLightOff);
     remoteControl.setCommand(1, kitchenLightOn, kitchenLightOff);
+    remoteControl.setCommand(2, ceilingFanOn, ceilingFanOff);
+    remoteControl.setCommand(3, garageDoorUp, garageDoorDown);
 
     console.log(remoteControl.toString());
+
+    remoteControl.onButtonWasPushed(0);
+    remoteControl.offButtonWasPushed(0);
+
+    remoteControl.onButtonWasPushed(1);
+    remoteControl.offButtonWasPushed(1);
+
+    remoteControl.onButtonWasPushed(2);
+    remoteControl.offButtonWasPushed(2);
+
+    remoteControl.onButtonWasPushed(3);
+    remoteControl.offButtonWasPushed(3);
   }
 }
 

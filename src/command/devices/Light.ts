@@ -6,10 +6,10 @@ export default class Light {
   }
 
   on(): void {
-    console.log('Light is on');
+    console.log(`Light ${this.name} is on`);
   }
 
   off(): void {
-    console.log('Light is off');
+    console.log(`Light ${this.name} is off`);
   }
 }

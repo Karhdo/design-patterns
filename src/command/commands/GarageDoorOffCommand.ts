@@ -1,7 +1,7 @@
 import { GarageDoor } from '../devices';
 import { Command } from '../interfaces';
 
-export default class GarageDoorOnCommand implements Command {
+export default class GarageDoorOffCommand implements Command {
   private garageDoor: GarageDoor;
 
   constructor(garageDoor: GarageDoor) {
@@ -9,6 +9,6 @@ export default class GarageDoorOnCommand implements Command {
   }
 
   execute(): void {
-    this.garageDoor.up();
+    this.garageDoor.down();
   }
 }

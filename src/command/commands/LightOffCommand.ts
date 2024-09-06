@@ -9,6 +9,6 @@ export default class LighOffCommand implements Command {
   }
 
   execute(): void {
-    this.light.on();
+    this.light.off();
   }
 }
